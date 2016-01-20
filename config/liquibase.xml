@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="hibernate_sequence" author="" dbms="oracle">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+
+    <changeSet id="1" author="">
+        <createTable tableName="agent">
+            <column name="id" type="integer"><constraints primaryKey="true"/></column>
+            <column name="phone" type="varchar(20) not null"/>
+            <column name="password" type="text not null"/>
+            <column name="createdAt" type="timestamp" defaultValueComputed="systimestamp"/>
+        </createTable>
+
+        <createTable tableName="account">
+            <column name="id" type="integer"><constraints primaryKey="true"/></column>
+            <column name="agent_id" type="integer not null"/>
+            <column name="balance" type="float not null"/>
+            <column name="createdAt" type="timestamp" defaultValueComputed="systimestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1-h2" author="" dbms="h2">
+        <modifyDataType tableName="agent" columnName="id" newDataType="integer auto_increment"/>
+        <modifyDataType tableName="account" columnName="id" newDataType="integer auto_increment"/>
+    </changeSet>
+
+    <!--
+    <changeSet id="2" author="">
+        <insert tableName="test">
+            <column name="id" value="0"/>
+            <column name="name" value="test"/>
+            <column name="sum" value="59.437755"/>
+        </insert>
+    </changeSet>
+    -->
+</databaseChangeLog>

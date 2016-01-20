@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <tx:annotation-driven  transaction-manager="transactionManager"/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="jdbc/ds"/>
+    </bean>
+
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="changeLog" value="file:config/liquibase.xml"/>
+    </bean>
+
+    <!--
+    <service id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/servlet"/>
+        <property name="username" value="root"/>
+        <property name="password" value="qwerty"/>
+    </service>
+    -->
+
+    <bean id="contextApplicationContextProvider" class="ru.project.controller.ApplicationContextProvider">
+    </bean>
+
+    <bean id="agentDao" class="ru.project.DAO.AgentDAO">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="accountDao" class="ru.project.DAO.AccountDAO">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="agentService" class="ru.project.service.AgentServiceImpl">
+        <property name="dao" ref="agentDao"/>
+    </bean>
+
+    <bean id="accountService" class="ru.project.service.AccountServiceImpl">
+        <property name="dao" ref="accountDao"/>
+    </bean>
+
+</beans>
+
