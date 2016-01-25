@@ -1,4 +1,4 @@
-package ru.project.DAO;
+package ru.project.service.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -9,7 +9,6 @@ import ru.project.utils.HashGen;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AgentDAO extends JdbcDaoSupport {

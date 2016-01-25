@@ -10,20 +10,9 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!--
     <listener>
         <listener-class>ru.project.controller.ApplicationContextListener</listener-class>
     </listener>
-
-    <!--
-    <servlet>
-        <servlet-name>servlet</servlet-name>
-        <servlet-class>ru.project.controller.Servlet</servlet-class>
-        <async-supported>true</async-supported>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>servlet</servlet-name>
-        <url-pattern>/servlet/*</url-pattern>
-    </servlet-mapping>
     -->
 </web-app>

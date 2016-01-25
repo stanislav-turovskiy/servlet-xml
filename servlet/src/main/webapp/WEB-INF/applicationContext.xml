@@ -29,14 +29,16 @@
     </service>
     -->
 
+    <!--
     <bean id="contextApplicationContextProvider" class="ru.project.controller.ApplicationContextProvider">
     </bean>
+    -->
 
-    <bean id="agentDao" class="ru.project.DAO.AgentDAO">
+    <bean id="agentDao" class="ru.project.service.dao.AgentDAO">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountDao" class="ru.project.DAO.AccountDAO">
+    <bean id="accountDao" class="ru.project.service.dao.AccountDAO">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

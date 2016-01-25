@@ -1,13 +1,10 @@
-package ru.project.DAO;
+package ru.project.service.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import ru.project.model.Account;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class AccountDAO extends JdbcDaoSupport {
 

@@ -2,11 +2,16 @@ package ru.project.service;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.project.DAO.AgentDAO;
+import ru.project.service.dao.AgentDAO;
 import ru.project.model.Agent;
 
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.sql.SQLException;
 
+@Named
+@Singleton
 public class AgentServiceImpl implements AgentService {
     private AgentDAO dao;
 

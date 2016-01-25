@@ -2,11 +2,16 @@ package ru.project.service;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.project.DAO.AccountDAO;
+import ru.project.service.dao.AccountDAO;
 import ru.project.model.Account;
 
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.sql.SQLException;
 
+@Named
+@Singleton
 public class AccountServiceImpl implements AccountService {
 
     private AccountDAO dao;
