@@ -1,9 +1,11 @@
-package ru.project.service.dao;
+package ru.project.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import ru.project.model.Account;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDAO extends JdbcDaoSupport {
@@ -17,15 +19,12 @@ public class AccountDAO extends JdbcDaoSupport {
         try {
             return getJdbcTemplate().queryForObject("SELECT * FROM account WHERE agent_id = ?",
                     new Object[]{agentId},
-                    (rs, rowNum) -> new Account(rs.getInt("agent_id"), rs.getBigDecimal("balance"))
-                /*
-                new RowMapper<Account>() {
-                    @Override
-                    public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        return new Account(rs.getInt("agent_id"), rs.getBigDecimal("balance"));
+                    new RowMapper<Account>() {
+                        @Override
+                        public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+                            return new Account(rs.getInt("agent_id"), rs.getBigDecimal("balance"));
+                        }
                     }
-                }
-                */
             );
         } catch (EmptyResultDataAccessException e) {
             return null;

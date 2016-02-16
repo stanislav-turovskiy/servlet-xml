@@ -34,11 +34,11 @@
     </bean>
     -->
 
-    <bean id="agentDao" class="ru.project.service.dao.AgentDAO">
+    <bean id="agentDao" class="ru.project.dao.AgentDAO">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountDao" class="ru.project.service.dao.AccountDAO">
+    <bean id="accountDao" class="ru.project.dao.AccountDAO">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

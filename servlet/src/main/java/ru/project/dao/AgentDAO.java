@@ -1,4 +1,4 @@
-package ru.project.service.dao;
+package ru.project.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

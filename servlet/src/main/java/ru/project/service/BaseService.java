@@ -9,15 +9,10 @@ import ru.project.transport.ResultEnum;
 import ru.project.utils.HashGen;
 import ru.project.utils.XmlUtils;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Named
-@Singleton
 public class BaseService {
 
     private final static Logger logger = LoggerFactory.getLogger(BaseService.class);
@@ -25,7 +20,6 @@ public class BaseService {
     protected AgentService agentService;
     protected AccountService accountService;
 
-    @Inject
     public BaseService(AgentService agentService, AccountService accountService) {
         this.agentService = agentService;
         this.accountService = accountService;
